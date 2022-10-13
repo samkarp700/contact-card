@@ -11,14 +11,16 @@ import Logo from '../images/logo.png';
 import Bear from '../images/bear.png';
 import Dog from '../images/dog.png';
 
-window.addEventListener('load', function () {
+//import css files
+import "../css/index.css";
+
+import { initDB } from '../js/database';
+
+window.addEventListener('load', function() {
+    initDB();
     document.getElementById('logo').src = Logo;
     document.getElementById('bear').src = Bear;
     document.getElementById('dog').src = Dog;
-
-});
-
-//import css files
-import "../css/index.css";
+})
 
 
