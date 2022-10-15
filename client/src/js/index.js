@@ -14,7 +14,7 @@ import Dog from '../images/dog.png';
 //import css files
 import "../css/index.css";
 
-import { getDB, initDB, postDB } from '../js/database';
+import { initDB, postDB, deleteDB, editDB } from '../js/database';
 
 window.addEventListener('load', function() {
     initDB();
@@ -46,6 +46,12 @@ window.addEventListener('load', function() {
   if (submitBtnToUpdate == false) {
     postDB(name, email, phone, profile);
   } else {
+  let name = document.getElementById("name").value;
+  let phone = document.getElementById("phone").value;
+  let email = document.getElementById("email").value;
+  let profile = document.querySelector('input[type="radio"]:checked').value;
+
+  editDB(profileId, name, email, phone, profile);
   
     fetchCards();
       // Toggles the submit button back to POST functionality
@@ -59,3 +65,31 @@ window.addEventListener('load', function() {
   // Reload the DOM
   fetchCards();
   });
+
+  //card functionality
+  //adds deleteCard() to the global scope so each card has access to it
+  //window. "scopes" the function to the window object to give the card the ability to be deleted. 
+  window.deleteCard = (e) => {
+    //grabs the id from the button element attached to the contact card
+    let id = parseInt(e.id);
+    //delete the card
+    deleteDB(id);
+    //reload the dom 
+    fetchCards();
+  };
+
+  window.editCard = (e) => {
+    profileId = parseInt(e.dataset.id);
+
+    let editName = e.dataset.name;
+    let editEmail = e.dataset.email;
+    let editPhone = e.dataset.phone;
+
+    document.getElementById("name").value = editName;
+    document.getElementById("email").value = editEmail;
+    document.getElementById("phone").value = editPhone;
+
+    form.style.display = "block";
+    
+    submitBtnToUpdate = true;
+  };
