@@ -5,7 +5,6 @@ import { Tooltip, Toast, Popover } from 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {fetchCards} from './cards';
 
-
 //import css files
 import Logo from '../images/logo.png';
 import Bear from '../images/bear.png';
@@ -16,6 +15,12 @@ import "../css/index.css";
 
 import { initDB, postDB, deleteDB, editDB } from '../js/database';
 
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    this.navigator.serviceWorker.register('./service-worker.js');
+  })};
+
+  //use the window load event to keep the page load performant
 window.addEventListener('load', function() {
     initDB();
     fetchCards();
