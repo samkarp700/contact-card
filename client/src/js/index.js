@@ -1,9 +1,12 @@
 //entry point that webpack will look at to determine dependencies and assets for app
+import { initDB, postDB, deleteDB, editDB } from '../js/database';
 import { toggleForm, clearForm } from "./form";
+import {fetchCards} from './cards';
+
 //import bootstrap and popper
 import { Tooltip, Toast, Popover } from 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {fetchCards} from './cards';
+
 
 //import css files
 import Logo from '../images/logo.png';
@@ -13,12 +16,6 @@ import Dog from '../images/dog.png';
 //import css files
 import "../css/index.css";
 
-import { initDB, postDB, deleteDB, editDB } from '../js/database';
-
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function() {
-    this.navigator.serviceWorker.register('./service-worker.js');
-  })};
 
   //use the window load event to keep the page load performant
 window.addEventListener('load', function() {
@@ -29,7 +26,7 @@ window.addEventListener('load', function() {
     document.getElementById('dogThumbnail').src = Dog;
     
 })
-//install buttong
+//install button
 const installBtn = document.getElementById('installBtn');
 
 window.addEventListener('beforeinstallprompt', (event) => {
