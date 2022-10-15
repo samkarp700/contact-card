@@ -14,10 +14,13 @@ import Dog from '../images/dog.png';
 //import css files
 import "../css/index.css";
 
-import { initDB } from '../js/database';
+import { getDB, initDB, postDB } from '../js/database';
 
 window.addEventListener('load', function() {
     initDB();
+    getDB();
+    postDB();
+    getDB();
     document.getElementById('logo').src = Logo;
     document.getElementById('bear').src = Bear;
     document.getElementById('dog').src = Dog;
