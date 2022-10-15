@@ -27,6 +27,7 @@ window.addEventListener('load', function() {
     document.getElementById('logo').src = Logo;
     document.getElementById('bearThumbnail').src = Bear;
     document.getElementById('dogThumbnail').src = Dog;
+    
 })
 
   // Form functionality
